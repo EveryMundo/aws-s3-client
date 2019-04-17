@@ -1,0 +1,27 @@
+{
+  "name": "@everymundo/aws-s3-client",
+  "version": "0.0.0",
+  "description": "This is an extraction of the S3 client files from aws-sdk node package",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node -e \"assert(require('./').S3 instanceof Function) && assert(require('./').S3 === require('./lib/clients/S3'))\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EveryMundo/aws-s3-client.git"
+  },
+  "keywords": [],
+  "author": "Daniel Santana <git@danielsantana.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EveryMundo/aws-s3-client/issues"
+  },
+  "homepage": "https://github.com/EveryMundo/aws-s3-client#readme",
+  "dependencies": {
+    "jmespath": "^0.15.0",
+    "xml2js": "^0.4.19"
+  }
+}
