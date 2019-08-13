@@ -20,24 +20,32 @@ npm install --save @everymundo/aws-s3-client
 ```
 
 ## Usage
-We recommend you using the following approach just so you can easily stub ```lib.S3``` on your tests
+Using Async functions your code can be as simple as this:
 ```js
+// We recommend you using the following approach just so you can easily stub ```lib.S3``` on your tests
+const lib = require('@everymundo/aws-s3-client')
+
+const getS3File = async (Bucket, Key) => {
+  const s3client = new lib.S3();
+
+  return s3client.getObject({Bucket, Key}).promise();
+})
+```
+
+If you prefer the callback approach you can do this:
+```js
+// We recommend you using the following approach just so you can easily stub ```lib.S3``` on your tests
 const lib = require('@everymundo/aws-s3-client')
 
 const getS3File = (Bucket, Key) => new Promise((resolve, reject) => {
   const s3client = new lib.S3();
-  
+
   s3client.getObject({Bucket, Key}, (err, response) => err ? reject(err) : resolve(response));
 })
 ```
 
-if you don't care for stubbing you can go ahead and do this
+if you don't care for stubbing you can go ahead and import the S3 directly as a constant
 ```js
 const {S3} = require('@everymundo/aws-s3-client')
 
-const getS3File = (Bucket, Key) => new Promise((resolve, reject) => {
-  const s3client = S3();
-  
-  s3client.getObject({Bucket, Key}, (err, response) => err ? reject(err) : resolve(response));
-})
 ```
