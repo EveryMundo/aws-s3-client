@@ -26,9 +26,9 @@ Using Async functions your code can be as simple as this:
 const lib = require('@everymundo/aws-s3-client')
 
 const getS3File = async (Bucket, Key) => {
-  const s3client = new lib.S3();
+  const s3client = new lib.S3()
 
-  return s3client.getObject({Bucket, Key}).promise();
+  return s3client.getObject({Bucket, Key}).promise()
 })
 ```
 
@@ -38,9 +38,9 @@ If you prefer the callback approach you can do this:
 const lib = require('@everymundo/aws-s3-client')
 
 const getS3File = (Bucket, Key) => new Promise((resolve, reject) => {
-  const s3client = new lib.S3();
+  const s3client = new lib.S3()
 
-  s3client.getObject({Bucket, Key}, (err, response) => err ? reject(err) : resolve(response));
+  s3client.getObject({Bucket, Key}, (err, response) => err ? reject(err) : resolve(response))
 })
 ```
 
