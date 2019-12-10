@@ -22,6 +22,6 @@
   "homepage": "https://github.com/EveryMundo/aws-s3-client#readme",
   "dependencies": {
     "jmespath": "^0.15.0",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.22"
   }
 }
