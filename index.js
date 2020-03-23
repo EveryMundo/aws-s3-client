@@ -23,4 +23,16 @@ S3.prototype.getObjectIfContentHasChanged = async function(params) {
   return res
 }
 
-module.exports = { S3, get etags() {return JSON.parse(JSON.stringify(etags))} }
+const exportObject = {
+  S3,
+  get s3Client() {
+    console.log('creating s3Client')
+
+    const s3Client = new S3({ httpOptions: { agent: new https.Agent({ keepAlive: true }) } })
+
+    return Object.defineProperty(this, 's3Client', { value: s3Client, maxSockets: 50, timeout: 100_000_000 })
+  },
+  get etags() {return JSON.parse(JSON.stringify(etags))}
+}
+
+module.exports = exportObject
