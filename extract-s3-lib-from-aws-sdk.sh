@@ -19,13 +19,14 @@ npm i aws-sdk
 
 # Starts copying files
 cp -va node_modules/aws-sdk/apis/s3* ../lib/apis/
+cp -va node_modules/aws-sdk/apis/metadata.json ../lib/apis/
 cp -va node_modules/aws-sdk/clients/{s3.js,sts.js,cognitoidentity.js} ../lib/clients/
 cp -va node_modules/aws-sdk/vendor/endpoint-cache/* ../lib/vendor/endpoint-cache/
 
 # Copying libs
 cp -va node_modules/aws-sdk/lib/{event-stream,protocol,json,query,model,xml,credentials,http,signers,realclock,publisher,shared-ini,s3} ../lib/lib/
 
-cp -va node_modules/aws-sdk/lib/{util,node_loader,api_loader,core,sequential_executor,service,region_config,config,credentials}.js ../lib/lib/
+cp -va node_modules/aws-sdk/lib/{util,node_loader,api_loader,core,sequential_executor,service,region_config,config,credentials,config_regional_endpoint}.js ../lib/lib/
 cp -va node_modules/aws-sdk/lib/{http,event_listeners,discover_endpoint,request,state_machine,response,resource_waiter,param_validator}.js ../lib/lib/
 cp -va node_modules/aws-sdk/lib/metadata_service.js ../lib/lib/
 
