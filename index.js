@@ -30,7 +30,7 @@ const exportObject = {
 
     const s3Client = new S3({ httpOptions: { agent: new https.Agent({ keepAlive: true }) } })
 
-    return Object.defineProperty(this, 's3Client', { value: s3Client, maxSockets: 50, timeout: 100_000_000 })
+    return Object.defineProperty(this, 's3Client', { value: s3Client, maxSockets: 50, timeout: 100_000_000 }).s3Client
   },
   get etags() {return JSON.parse(JSON.stringify(etags))}
 }
