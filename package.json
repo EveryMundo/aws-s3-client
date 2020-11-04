@@ -22,7 +22,7 @@
   "homepage": "https://github.com/EveryMundo/aws-s3-client#readme",
   "dependencies": {
     "jmespath": "^0.15.0",
-    "uuid": "^7.0.2",
+    "uuid": "^8.3.1",
     "xml2js": "^0.4.23"
   }
 }

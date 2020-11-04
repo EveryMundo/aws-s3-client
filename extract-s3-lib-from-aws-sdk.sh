@@ -2,9 +2,9 @@
 
 cd $(dirname $0)
 
-mkdir lib/{apis,clients,lib,vendor}
-mkdir -p lib/vendor/endpoint-cache/utils
-mkdir -p lib/lib/services
+mkdir -p lib/{apis,clients,lib,vendor}
+mkdir -p lib/vendor/endpoint-cache/utils || echo "ok lib/vendor/endpoint-cache/utils"
+mkdir -p lib/lib/services || echo "ok lib/lib/services"
 
 
 set -e
@@ -31,7 +31,7 @@ cp -va node_modules/aws-sdk/lib/{http,event_listeners,discover_endpoint,request,
 cp -va node_modules/aws-sdk/lib/metadata_service.js ../lib/lib/
 
 cp -va node_modules/aws-sdk/lib/region_config_data.json ../lib/lib/
-cp -va node_modules/aws-sdk/lib/services/{cognitoidentity,s3,sts}.js ../lib/lib/services/
+cp -va node_modules/aws-sdk/lib/services/{cognitoidentity,s3*,sts}.js ../lib/lib/services/
 
 cd ../
 

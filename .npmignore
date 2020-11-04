@@ -62,3 +62,4 @@ temp/**
 test/**
 extract-s3-lib-from-aws-sdk.sh
 temp-app/*
+temp/**

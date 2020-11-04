@@ -1,15 +1,17 @@
 const S3 = require('./lib/clients/s3')
 
-const etags = {}
+const etags = new Map()
 
 S3.prototype.getObjectIfContentHasChanged = async function (params) {
   const s3Uri = `s3://${params.Bucket}/${params.Key}`
 
-  if (etags[s3Uri]) {
+  if (etags.has(s3Uri)) {
     try {
       const { ETag } = await this.headObject(params).promise()
 
-      if (ETag === etags[s3Uri]) return false
+      if (ETag === etags.get(s3Uri)) {
+        return false
+      }
     } catch (e) {
       console.error(e.message)
     }
@@ -18,21 +20,30 @@ S3.prototype.getObjectIfContentHasChanged = async function (params) {
   const res = await this.getObject(params).promise()
 
   console.log({ Etag: res.ETag, s3Uri })
-  etags[s3Uri] = res.ETag
+  etags.set(s3Uri, res.ETag)
 
   return res
 }
 
+function createS3Client ({ keepAlive = true } = {}) {
+  return new S3({
+    httpOptions: {
+      agent: new (require('https')).Agent({ keepAlive })
+    }
+  })
+}
+
 const exportObject = {
   S3,
+  createS3Client,
   get s3Client () {
-    console.log('creating s3Client')
-
-    const s3Client = new S3({ httpOptions: { agent: new (require('https')).Agent({ keepAlive: true }) } })
+    const s3Client = this.createS3Client({ keepAlive: true })
 
     return Object.defineProperty(this, 's3Client', { value: s3Client }).s3Client
   },
-  get etags () { return JSON.parse(JSON.stringify(etags)) }
+  get etags () {
+    return new Map(etags)
+  }
 }
 
 module.exports = exportObject
