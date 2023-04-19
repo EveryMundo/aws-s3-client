@@ -1,4 +1,4 @@
-import S3 from 'aws-sdk/clients/s3.js'
+const S3 = require('aws-sdk/clients/s3')
 
 const etags = new Map()
 
@@ -33,7 +33,7 @@ function createS3Client ({ keepAlive = true } = {}) {
   })
 }
 
-export default {
+const exportObject = {
   S3,
   createS3Client,
   get s3Client () {
@@ -45,3 +45,5 @@ export default {
     return new Map(etags)
   }
 }
+
+module.exports = exportObject
