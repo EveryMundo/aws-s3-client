@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "description": "This is an extraction of the S3 client files from aws-sdk node package",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "lib": "lib"
   },
@@ -20,9 +21,7 @@
     "url": "https://github.com/EveryMundo/aws-s3-client/issues"
   },
   "homepage": "https://github.com/EveryMundo/aws-s3-client#readme",
-  "dependencies": {
-    "jmespath": "^0.15.0",
-    "uuid": "^8.3.1",
-    "xml2js": "^0.4.23"
+  "devDependencies": {
+    "aws-sdk": "^2"
   }
 }
